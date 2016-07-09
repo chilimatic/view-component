@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace chilimatic\lib\View\Adapter;
 
 use chilimatic\lib\View\Interfaces\IMinimalView;
-use chilimatic\lib\View\SettingTrait;
+use chilimatic\lib\View\Traits\SettingTrait;
 
 class Json implements IMinimalView
 {
@@ -36,31 +36,4 @@ class Json implements IMinimalView
      * @return void
      */
     public function initRender(){}
-
-    /**
-     * @param string $key
-     * @return bool
-     */
-    public function __isset(string $key) {
-        return isset($this->{$key});
-    }
-
-    /**
-     * @param string $key
-     * @param mixed $val
-     */
-    public function __set(string $key, $val)
-    {
-        $this->set($key, $val);
-    }
-
-    /**
-     * @param string $key
-     *
-     * @return mixed|null
-     */
-    public function __get(string $key)
-    {
-        return $this->get($key);
-    }
 }

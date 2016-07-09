@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace chilimatic\lib\View;
 use chilimatic\lib\View\Interfaces\IView;
+use chilimatic\lib\View\Traits\SettingTrait;
 
 /**
  * Class Generic

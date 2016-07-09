@@ -36,12 +36,22 @@ class PHtml extends AbstractView
      */
     public function initRender()
     {
-        if (!$this->getTemplateFile() || !file_exists((string) $this->getTemplateFile())) {
+        $tmpFile = $templateFile = $this->getTemplateFile();
+
+        if (!$templateFile) {
             if ($this->getConfigVariable('templatePath')) {
-                $this->setTemplateFile($this->getConfigVariable('templatePath') . self::FILE_EXTENSION);
+                $tmpFile = $this->getConfigVariable('templatePath') . self::FILE_EXTENSION;
             } else {
-                throw new ViewException('No Tpl found:' . $this->getTemplateFile());
+                throw new ViewException('No template-file set or passed as parameter: ' . $templateFile);
             }
+        }
+
+        if (!file_exists((string) $templateFile)) {
+            throw new ViewException('Template file does not exist');
+        }
+
+        if ($tmpFile != $templateFile) {
+            $this->setTemplateFile($templateFile);
         }
     }
 
@@ -59,10 +69,6 @@ class PHtml extends AbstractView
         }
 
         $this->initRender();
-
-        if (!$this->getTemplateFile()) {
-            throw new ViewException('no template given');
-        }
 
 
         try {
