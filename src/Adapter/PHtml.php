@@ -53,6 +53,10 @@ final class PHtml extends AbstractTemplateView implements IViewAdapter
             }
         }
 
+        if (false === strpos($templateFile, $this->getExtension())){
+            $templateFile .= $this->getExtension();
+        }
+
         if (!file_exists((string) $templateFile)) {
             throw new ViewException('Template file does not exist');
         }

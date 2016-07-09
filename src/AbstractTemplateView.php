@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 namespace chilimatic\lib\View;
-use chilimatic\lib\View\Interfaces\IViewAdapter;
 use chilimatic\lib\View\Traits\SettingTrait;
 
 /**
