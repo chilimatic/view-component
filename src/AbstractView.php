@@ -12,6 +12,8 @@ use chilimatic\lib\View\Traits\SettingTrait;
  */
 abstract class AbstractView implements IView
 {
+    const TEMPLATE_FILE_INDEX = 'templateFile';
+
     /**
      * trait for inheritance
      */
@@ -23,12 +25,6 @@ abstract class AbstractView implements IView
      * @var mixed|null
      */
     protected $engine;
-
-    /**
-     * @var string
-     */
-    private $templateFile;
-
 
     /**
      * sets the engine vars to the current engine
@@ -44,7 +40,7 @@ abstract class AbstractView implements IView
         }
 
         foreach ($this->setting as $key => $value) {
-            if (empty($key) || !property_exists($this->engine, $key)) {
+            if (!isset($this->engine[$key])) {
                 continue;
             }
 
@@ -72,7 +68,7 @@ abstract class AbstractView implements IView
      */
     public function getTemplateFile()
     {
-        return $this->templateFile;
+        return $this->getConfigVariable(self::TEMPLATE_FILE_INDEX);
     }
 
 
@@ -86,7 +82,7 @@ abstract class AbstractView implements IView
         if (!$templateFile) {
             return $this;
         }
-        $this->templateFile = (string) $templateFile;
+        $this->setConfigVariable(self::TEMPLATE_FILE_INDEX, (string) $templateFile);
 
         return $this;
     }
