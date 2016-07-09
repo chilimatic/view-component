@@ -28,7 +28,7 @@ class ViewBuilder
 
         $viewFactory = $this->getViewFactory();
         /**
-         * @var AbstractView $view
+         * @var AbstractTemplateView $view
          */
         $view = $viewFactory->make($viewName);
         $view->setConfigVariable('templateFile', $viewTemplateFile);

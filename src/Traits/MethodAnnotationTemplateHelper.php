@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace chilimatic\lib\View\traits;
 
 use chilimatic\lib\Parser\Annotation\AnnotationViewParser;
-use chilimatic\lib\View\AbstractView;
+use chilimatic\lib\View\AbstractTemplateView;
 
 trait MethodAnnotationTemplateHelper
 {
@@ -22,7 +22,7 @@ trait MethodAnnotationTemplateHelper
     /**
      * @param string $callerName
      * @param string $relativePath
-     * @return AbstractView|string
+     * @return AbstractTemplateView|string
      */
     public function getViewFromAnnotation(string $callerName, string $relativePath)
     {
@@ -45,7 +45,7 @@ trait MethodAnnotationTemplateHelper
             );
 
             /**
-             * @var AbstractView $class
+             * @var AbstractTemplateView $class
              */
             $class = self::$annotationTemplateCache[__CLASS__][$callerName]['class'] = new $tokens[0];
             self::$annotationTemplateCache[__CLASS__][$callerName]['token'] = $tokens;

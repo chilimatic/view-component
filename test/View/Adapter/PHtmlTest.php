@@ -9,7 +9,7 @@ class PHtmlTest extends PHPUnit_Framework_TestCase
     public function adapterImplementsInterface() {
         $phtml = new \chilimatic\lib\View\Adapter\PHtml();
 
-        self::assertInstanceOf('\chilimatic\lib\View\Interfaces\IView', $phtml);
+        self::assertInstanceOf('\chilimatic\lib\View\Interfaces\IViewAdapter', $phtml);
     }
 
     /**

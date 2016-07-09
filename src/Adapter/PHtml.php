@@ -3,15 +3,16 @@ declare(strict_types=1);
 
 namespace chilimatic\lib\View\Adapter;
 
-use chilimatic\lib\View\AbstractView;
+use chilimatic\lib\View\AbstractTemplateView;
 use chilimatic\lib\View\Exception\ViewException;
+use chilimatic\lib\View\Interfaces\IViewAdapter;
 
 /**
  * Class PHtml
  *
  * @package chilimatic\lib\View
  */
-class PHtml extends AbstractView
+final class PHtml extends AbstractTemplateView implements IViewAdapter
 {
     /**
      * default rendering file extension
@@ -30,6 +31,12 @@ class PHtml extends AbstractView
      */
     protected $content = '';
 
+    /**
+     * @return string
+     */
+    public function getExtension() : string {
+        return self::FILE_EXTENSION;
+    }
 
     /**
      * @return mixed|void
@@ -62,7 +69,7 @@ class PHtml extends AbstractView
      * @throws \ErrorException
      * @return string
      */
-    public function render(string $templateFile = '')
+    public function render(string $templateFile = '') : string
     {
         if ($templateFile) {
             $this->setTemplateFile($templateFile);

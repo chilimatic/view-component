@@ -9,7 +9,7 @@ class JsonTest extends PHPUnit_Framework_TestCase
     public function adapterImplementsInterface() {
         $json = new \chilimatic\lib\View\Adapter\Json();
 
-        self::assertInstanceOf('\chilimatic\lib\View\Interfaces\IMinimalView', $json);
+        self::assertInstanceOf('\chilimatic\lib\View\Interfaces\IViewAdapter', $json);
     }
 
     /**

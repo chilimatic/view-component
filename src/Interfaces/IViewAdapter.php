@@ -8,7 +8,7 @@ namespace chilimatic\lib\View\Interfaces;
  *
  * @package chilimatic\lib\View
  */
-Interface IView
+Interface IViewAdapter
 {
     /**
      * initializes the specific render presets
@@ -23,5 +23,5 @@ Interface IView
      *
      * @param string $templateFile
      */
-    public function render(string $templateFile = '');
+    public function render(string $templateFile = '') : string;
 }

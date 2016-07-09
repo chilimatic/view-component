@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace chilimatic\lib\View\Adapter;
 
-use chilimatic\lib\View\Interfaces\IMinimalView;
+use chilimatic\lib\View\Interfaces\IViewAdapter;
 use chilimatic\lib\View\Traits\SettingTrait;
 
-class Json implements IMinimalView
+final class Json implements IViewAdapter
 {
     /**
      * <p>
@@ -23,12 +23,11 @@ class Json implements IMinimalView
 
 
     /**
+     * the template file is discarded ....
      * @return string
      */
-    public function render()
+    public function render(string $templateFile = '') : string
     {
-        $this->initRender();
-
         return json_encode($this->getAll(), JSON_NUMERIC_CHECK);
     }
 

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace chilimatic\lib\View;
-use chilimatic\lib\View\Interfaces\IView;
+use chilimatic\lib\View\Interfaces\IViewAdapter;
 use chilimatic\lib\View\Traits\SettingTrait;
 
 /**
@@ -10,7 +10,7 @@ use chilimatic\lib\View\Traits\SettingTrait;
  *
  * @package chilimatic\lib\View
  */
-abstract class AbstractView implements IView
+abstract class AbstractTemplateView
 {
     const TEMPLATE_FILE_INDEX = 'templateFile';
 
@@ -51,16 +51,9 @@ abstract class AbstractView implements IView
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    abstract public function initRender();
-
-
-    /**
-     * @param string $templateFile
-     * @return mixed
-     */
-    abstract public function render(string $templateFile = '');
+    abstract public function getExtension() : string;
 
 
     /**
